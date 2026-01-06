@@ -1,4 +1,4 @@
-resource "aws_ec2_transit_gateway" "us_hub" {
+resource "aws_ec2_transit_gateway" "us_east1_hub" {
   description = "US Hub for VPC peering"
   
   auto_accept_shared_attachments = "enable"
@@ -12,7 +12,7 @@ resource "aws_ec2_transit_gateway" "us_hub" {
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east1" {
   subnet_ids         = ["subnet-0fb212c06357f4d21", "subnet-09ce0e87f2c573a7c"] 
-  transit_gateway_id = aws_ec2_transit_gateway.us_hub.id
+  transit_gateway_id = aws_ec2_transit_gateway.us_east1_hub.id
   vpc_id             = "vpc-01bb5a7a020da430f"
 
   tags = {
@@ -20,13 +20,13 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east1" {
   }
 }
 
-resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east2" {
-  subnet_ids         = ["subnet-073045df8b055adfa", "subnet-03330ce9956b684e0"] 
-  transit_gateway_id = aws_ec2_transit_gateway.us_hub.id
-  vpc_id             = "vpc-01bb5a7a020da430f"
-  provider = aws.us-east-2
+# resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east2" {
+#   subnet_ids         = ["subnet-073045df8b055adfa", "subnet-03330ce9956b684e0"] 
+#   transit_gateway_id = aws_ec2_transit_gateway.us_hub.id
+#   vpc_id             = "vpc-01bb5a7a020da430f"
+#   provider = aws.us-east-2
 
-  tags = {
-    Name = "vpc1-east2-attachment"
-  }
-}
+#   tags = {
+#     Name = "vpc1-east2-attachment"
+#   }
+# }
