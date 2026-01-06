@@ -11,13 +11,13 @@ resource "aws_ec2_transit_gateway" "us_east2_hub" {
   }
 }
 
-# resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east2" {
-#   subnet_ids         = ["subnet-073045df8b055adfa", "subnet-03330ce9956b684e0"] 
-#   transit_gateway_id = aws_ec2_transit_gateway.us_east2_hub.id
-#   vpc_id             = "vpc-0c7804067cd0ddef4"
-#   provider = aws.us-east-2
+resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east2" {
+  subnet_ids         = ["subnet-073045df8b055adfa", "subnet-03330ce9956b684e0"] 
+  transit_gateway_id = aws_ec2_transit_gateway.us_east2_hub.id
+  vpc_id             = "vpc-0c7804067cd0ddef4"
+  provider = aws.us-east-2
 
-#   tags = {
-#     Name = "vpc1-east2-attachment"
-#   }
-# }
+  tags = {
+    Name = "vpc1-east2-attachment"
+  }
+}
