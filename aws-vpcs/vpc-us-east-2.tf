@@ -1,4 +1,4 @@
-resource "aws_vpc" "virginia_vpc" {
+resource "aws_vpc" "ohio_vpc1" {
   cidr_block       = "10.9.0.0/21"
   instance_tenancy = "default"
   provider = "us-east-2"
