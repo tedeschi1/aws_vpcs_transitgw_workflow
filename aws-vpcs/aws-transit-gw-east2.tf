@@ -1,3 +1,25 @@
+data "aws_vpc" "ohio" {
+  provider = aws.us-east-2
+  filter {
+    name   = "tag:Name"
+    values = ["ohio_vpc1"] # Adjust if your East-2 VPC name is different
+  }
+}
+
+data "aws_subnets" "east2_all" {
+  provider = aws.us-east-2
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.ohio.id]
+  }
+}
+
+data "aws_subnet" "east2_details" {
+  provider = aws.us-east-2
+  for_each = toset(data.aws_subnets.east2_all.ids)
+  id       = each.value
+}
+
 resource "aws_ec2_transit_gateway" "us_east2_hub" {
   description = "US East2 Hub for VPC peering"
   
@@ -12,9 +34,9 @@ resource "aws_ec2_transit_gateway" "us_east2_hub" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east2" {
-  subnet_ids         = ["subnet-0c15b0f932a069eea", "subnet-073045df8b055adfa"] 
+  subnet_ids         = [for az, ids in local.east2_tgw_subnets : ids[0]] 
   transit_gateway_id = aws_ec2_transit_gateway.us_east2_hub.id
-  vpc_id             = "vpc-0c7804067cd0ddef4"
+  vpc_id             = data.aws_vpc.ohio.id
   provider = aws.us-east-2
 
   tags = {
