@@ -1,8 +1,8 @@
-resource "aws_vpc" "virginia_vpc" {
-  cidr_block       = "10.8.0.0/16"
+resource "aws_vpc" "virginia_vpc1" {
+  cidr_block       = "10.8.0.0/21"
   instance_tenancy = "default"
 
   tags = {
-    Name = "vpc-oh-transit"
+    Name = "vpc1-virginia"
   }
 }
