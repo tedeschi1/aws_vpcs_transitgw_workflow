@@ -1,0 +1,23 @@
+resource "aws_ec2_transit_gateway" "us_east2_hub" {
+  description = "US East2 Hub for VPC peering"
+  
+  auto_accept_shared_attachments = "enable"
+  default_route_table_association = "enable"
+  default_route_table_propagation = "enable"
+  provider = aws.us-east-2
+
+  tags = {
+    Name = "us-east2-hub-tgw"
+  }
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east2" {
+  subnet_ids         = ["subnet-073045df8b055adfa", "subnet-03330ce9956b684e0"] 
+  transit_gateway_id = aws_ec2_transit_gateway.us_east2_hub.id
+  vpc_id             = "vpc-01bb5a7a020da430f"
+  provider = aws.us-east-2
+
+  tags = {
+    Name = "vpc1-east2-attachment"
+  }
+}
