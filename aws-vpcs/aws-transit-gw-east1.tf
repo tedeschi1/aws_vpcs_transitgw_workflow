@@ -27,5 +27,5 @@ resource "aws_ec2_transit_gateway_route" "to_east2_tgw" {
 }
 
 output "aws_ec2_tgw_route_table_id" {
-  value = aws_ec2_transit_gateway.us_east1_hub.propagation_default_route_table_id.id
+  value = aws_ec2_transit_gateway.us_east1_hub.propagation_default_route_table_id
 }
