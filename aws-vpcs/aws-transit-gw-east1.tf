@@ -11,7 +11,7 @@ resource "aws_ec2_transit_gateway" "us_east1_hub" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east1" {
-  subnet_ids         = [ aws_subnet.virginia_vpc1_sn1.id, aws_subnet.virginia_vpc1_sn2.id ] 
+  subnet_ids         = [ aws_subnet.virginia_vpc1_sn1, aws_subnet.virginia_vpc1_sn2 ] 
   transit_gateway_id = aws_ec2_transit_gateway.us_east1_hub.id
   vpc_id             = aws_vpc.virginia_vpc1.id
 
