@@ -1,5 +1,5 @@
 data "aws_route_tables" "east2_all" {
-  vpc_id   = data.aws_vpc.ohio.id
+  vpc_id   = data.aws_vpc.ohio_vpc1.id
 }
 
 resource "aws_vpc" "ohio_vpc1" {

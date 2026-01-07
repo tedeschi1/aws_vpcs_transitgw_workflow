@@ -13,7 +13,7 @@ data "aws_vpc" "virginia" {
 data "aws_subnets" "east1_all" {
   filter {
     name   = "vpc-id"
-    values = [data.aws_vpc.virginia.id]
+    values = [data.aws_vpc.virginia_vpc1.id]
   }
 }
 
