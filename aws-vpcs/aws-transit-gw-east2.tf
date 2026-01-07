@@ -29,7 +29,3 @@ resource "aws_ec2_transit_gateway_route" "to_east1_tgw" {
   transit_gateway_route_table_id = aws_ec2_transit_gateway.us_east2_hub.propagation_default_route_table_id
   depends_on                     = [aws_ec2_transit_gateway_peering_attachment_accepter.tgw_peering_accepter]
 }
-
-output "aws_ec2_tgw_route_table_id_east2" {
-  value = aws_ec2_transit_gateway.us_east2_hub.propagation_default_route_table_id
-}
