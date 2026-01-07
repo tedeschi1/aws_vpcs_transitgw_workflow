@@ -31,6 +31,8 @@ resource "aws_ec2_transit_gateway" "us_east2_hub" {
   tags = {
     Name = "us-east2-hub-tgw"
   }
+
+  depends_on = [ aws_vpc.ohio_vpc1_sn1, aws_vpc.ohio_vpc1_sn2]
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east2" {
