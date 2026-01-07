@@ -10,7 +10,7 @@ data "aws_subnets" "east2_all" {
   provider = aws.us-east-2
   filter {
     name   = "vpc-id"
-    values = [data.aws_vpc.ohio_vpc1.id]
+    values = [data.aws_vpc.ohio.id]
   }
 }
 

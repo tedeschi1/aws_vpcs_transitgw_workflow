@@ -1,5 +1,5 @@
 data "aws_route_tables" "east1_all" {
-  vpc_id   = data.aws_vpc.virginia_vpc1.id
+  vpc_id   = data.aws_vpc.virginia.id
 }
 
 resource "aws_vpc" "virginia_vpc1" {
@@ -12,7 +12,7 @@ resource "aws_vpc" "virginia_vpc1" {
 }
 
 resource "aws_subnet" "virginia_vpc1_sn1" {
-  vpc_id     = aws_vpc.virginia_vpc1.id
+  vpc_id     = aws_vpc.virginia.id
   cidr_block = "10.8.0.0/24"
   availability_zone = "us-east-1a"
 
