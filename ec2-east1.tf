@@ -17,3 +17,5 @@ resource "aws_instance" "east_1_ec2" {
     Name = "ec2-east1"
   }
 }
+
+#
