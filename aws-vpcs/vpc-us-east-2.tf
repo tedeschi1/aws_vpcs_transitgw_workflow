@@ -32,7 +32,23 @@ resource "aws_subnet" "ohio_vpc1_sn2" {
 
 resource "aws_route" "vpc_east2_route" {
   provider               = aws.us-east-2
-  route_table_id         = "rtb-0800df7b27dcda704"
+  route_table_id         = aws_vpc.virginia_vpc1.main_route_table.id
   destination_cidr_block = "10.8.0.0/21" # Point to East-1 CIDR
   transit_gateway_id     = aws_ec2_transit_gateway.us_east2_hub.id
+}
+
+output "ohio_vpc_id" {
+  value = aws_vpc.ohio_vpc1.id
+}
+
+output "ohio_vpc_sn1_id" {
+  value = aws_subnet.ohio_vpc1_sn1.id
+}
+
+output "ohio_vpc_sn2_id" {
+  value = aws_subnet.ohio_vpc1_sn2.id
+}
+
+output "ohio_route_table_id" {
+  value = aws_vpc.ohio_vpc1.main_route_table.id
 }

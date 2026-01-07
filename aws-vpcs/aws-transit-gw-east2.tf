@@ -12,9 +12,9 @@ resource "aws_ec2_transit_gateway" "us_east2_hub" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east2" {
-  subnet_ids         = ["subnet-0c15b0f932a069eea", "subnet-073045df8b055adfa"] 
+  subnet_ids         = [ aws_subnet.ohio_vpc1_sn1.id, aws_subnet.ohio_vpc1_sn2.id] 
   transit_gateway_id = aws_ec2_transit_gateway.us_east2_hub.id
-  vpc_id             = "vpc-0c7804067cd0ddef4"
+  vpc_id             = aws_vpc.ohio_vpc1.id
   provider = aws.us-east-2
 
   tags = {

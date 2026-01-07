@@ -11,9 +11,9 @@ resource "aws_ec2_transit_gateway" "us_east1_hub" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1_east1" {
-  subnet_ids         = ["subnet-0fb212c06357f4d21", "subnet-09ce0e87f2c573a7c"] 
+  subnet_ids         = [ aws_subnet.virginia_vpc1_sn1.id, aws_subnet.virginia_vpc1_sn2.id ] 
   transit_gateway_id = aws_ec2_transit_gateway.us_east1_hub.id
-  vpc_id             = "vpc-01bb5a7a020da430f"
+  vpc_id             = aws_vpc.virginia_vpc1.id
 
   tags = {
     Name = "vpc1-east1-attachment"
