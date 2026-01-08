@@ -10,6 +10,7 @@ resource "aws_vpc" "virginia_vpc1" {
 resource "aws_subnet" "virginia_vpc1_sn1" {
   vpc_id     = aws_vpc.virginia_vpc1.id
   cidr_block = "10.8.0.0/24"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "virginia_vpc1_sn1"
@@ -19,6 +20,7 @@ resource "aws_subnet" "virginia_vpc1_sn1" {
 resource "aws_subnet" "virginia_vpc1_sn2" {
   vpc_id     = aws_vpc.virginia_vpc1.id
   cidr_block = "10.8.1.0/24"
+  availability_zone = "us-east-1b"
 
   tags = {
     Name = "virginia_vpc1_sn2"
