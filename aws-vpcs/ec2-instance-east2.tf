@@ -1,4 +1,4 @@
-data "aws_ami" "amazon_linux_east_1" {
+data "aws_ami" "amazon_linux_east_2" {
   most_recent = true
   owners      = ["amazon"]
 
@@ -8,12 +8,12 @@ data "aws_ami" "amazon_linux_east_1" {
   }
 }
 
-resource "aws_instance" "east_1_ec2" {
+resource "aws_instance" "east_2_ec2" {
   ami           = data.aws_ami.amazon_linux_east_1.id
   instance_type = "t2.micro"
-  subnet_id     = aws_subnet.virginia_vpc1_sn1.id
+  subnet_id     = aws_subnet.ohio_vpc1_sn1.id
 
   tags = {
-    Name = "ec2-east1"
+    Name = "ec2-east2"
   }
 }
